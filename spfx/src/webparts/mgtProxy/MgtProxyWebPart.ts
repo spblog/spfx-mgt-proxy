@@ -9,12 +9,26 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'MgtProxyWebPartStrings';
 import MgtProxy, { Props } from './components/MgtProxy';
+import { ProxyProvider } from '@microsoft/mgt-proxy-provider';
+import { Providers } from '@microsoft/mgt-element';
 
 export interface IMgtProxyWebPartProps {
   description: string;
 }
 
 export default class MgtProxyWebPart extends BaseClientSideWebPart<IMgtProxyWebPartProps> {
+
+  public onInit(): Promise<void> {
+    Providers.globalProvider = new ProxyProvider("https://localhost:44320/api/GraphProxy", async () => {
+      const provider = await this.context.aadTokenProviderFactory.getTokenProvider();
+      const token = await provider.getToken('14bfb200-fe7b-44ac-b19f-08d9fc2f833e');
+      return {
+        Authorization: `Bearer ${token}`,
+      };
+    });
+
+    return Promise.resolve();
+  }
 
   public render(): void {
     this.context

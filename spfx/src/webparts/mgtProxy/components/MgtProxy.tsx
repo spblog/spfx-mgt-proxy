@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from 'react';
 import { AadHttpClient, HttpClientResponse } from '@microsoft/sp-http';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { Spinner } from '@microsoft/office-ui-fabric-react-bundle';
+import { Person, PersonViewType, Login } from '@microsoft/mgt-react';
 
 export interface Props {
   context: WebPartContext;
@@ -11,7 +12,7 @@ export interface Props {
 export const MgtProxy: FC<Props> = ({ context }) => {
 
   const [error, setError] = useState<any>();
-  const [working, setWorking] = useState(true);
+  const [working, setWorking] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -26,7 +27,7 @@ export const MgtProxy: FC<Props> = ({ context }) => {
       }
     }
 
-    getData();
+    //getData();
   }, []);
 
   if (error) {
@@ -46,7 +47,7 @@ export const MgtProxy: FC<Props> = ({ context }) => {
 
   return (
     <div>
-      wowo soo cool
+      <Person personQuery="me" view={PersonViewType.twolines} />
     </div>
   )
 }

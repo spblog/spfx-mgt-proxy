@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Graph;
 using Microsoft.Identity.Web;
 using ServiceWebAPI.Filters;
+using ServiceWebAPI.Services;
 using System.Text.Json;
 
 namespace ServiceWebAPI
@@ -32,11 +34,15 @@ namespace ServiceWebAPI
                        .AllowAnyHeader();
             }));
 
-            services.AddControllers()
-                .AddJsonOptions(options =>
-                {
-                    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-                });
+            services.AddScoped<MSGraphClientFactory>();
+
+            services.AddScoped((provider) =>
+            {
+                var factory = provider.GetRequiredService<MSGraphClientFactory>();
+                return factory.CreateGraphClient();
+            });
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
