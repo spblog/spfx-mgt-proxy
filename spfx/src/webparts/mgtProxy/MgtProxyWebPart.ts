@@ -8,7 +8,7 @@ import {
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'MgtProxyWebPartStrings';
-import MgtProxy, { Props } from './components/MgtProxy';
+import MgtProxy from './components/MgtProxy';
 import { ProxyProvider } from '@microsoft/mgt-proxy-provider';
 import { Providers } from '@microsoft/mgt-element';
 
@@ -32,11 +32,8 @@ export default class MgtProxyWebPart extends BaseClientSideWebPart<IMgtProxyWebP
 
   public render(): void {
     this.context
-    const element: React.ReactElement<Props> = React.createElement(
-      MgtProxy,
-      {
-        context: this.context
-      }
+    const element: React.ReactElement = React.createElement(
+      MgtProxy
     );
 
     ReactDom.render(element, this.domElement);
