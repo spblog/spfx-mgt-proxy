@@ -1,0 +1,26 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "mgt-proxy-solution-client-side-solution",
+    "id": "5433821b-441c-438c-bad3-76f49784bc3d",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": ""
+    },
+    "webApiPermissionRequests": [
+     {
+       "resource": "SPFx-mgt-proxy",
+       "scope": "user_impersonation"
+     } 
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/mgt-proxy-solution.sppkg"
+  }
+}

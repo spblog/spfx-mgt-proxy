@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "mgt-proxy-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/mgtProxy/MgtProxyWebPart.js",
+          "manifest": "./src/webparts/mgtProxy/MgtProxyWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MgtProxyWebPartStrings": "lib/webparts/mgtProxy/loc/{locale}.js"
+  }
+}
