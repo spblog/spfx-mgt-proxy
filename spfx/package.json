@@ -10,9 +10,9 @@
     "serve": "gulp bundle --custom-serve --max_old_space_size=4096 && fast-serve"
   },
   "dependencies": {
-    "@microsoft/mgt-element": "2.1.0",
-    "@microsoft/mgt-proxy-provider": "2.1.0",
-    "@microsoft/mgt-react": "2.1.0",
+    "@microsoft/mgt-element": "2.3.1",
+    "@microsoft/mgt-proxy-provider": "2.3.1",
+    "@microsoft/mgt-react": "2.3.1",
     "@microsoft/sp-core-library": "1.12.1",
     "@microsoft/sp-lodash-subset": "1.12.1",
     "@microsoft/sp-office-ui-fabric-core": "1.12.1",
