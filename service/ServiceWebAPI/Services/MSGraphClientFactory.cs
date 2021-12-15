@@ -8,7 +8,7 @@ namespace ServiceWebAPI.Services
     {
         private readonly ITokenAcquisition _tokenAcquisition;
         // put all needed for your solution MS Graph scopes here
-        private readonly string[] _scopes = new[] { "User.Read User.ReadBasic.All Calendars.Read People.Read Contacts.Read User.Read.All Group.Read.All ChannelMessage.Read.All Sites.Read.All Mail.ReadBasic User.Read.All People.Read.All" };
+        private readonly string[] _scopes = new[] { "User.Read" };
 
         public MSGraphClientFactory(ITokenAcquisition tokenAcquisition)
         {

@@ -11,6 +11,7 @@ import * as strings from 'MgtProxyWebPartStrings';
 import MgtProxy from './components/MgtProxy';
 import { ProxyProvider } from '@microsoft/mgt-proxy-provider';
 import { Providers } from '@microsoft/mgt-element';
+const CLIENT_ID = '14bfb200-fe7b-44ac-b19f-08d9fc2f833e';
 
 export interface IMgtProxyWebPartProps {
   description: string;
@@ -21,7 +22,7 @@ export default class MgtProxyWebPart extends BaseClientSideWebPart<IMgtProxyWebP
   public onInit(): Promise<void> {
     Providers.globalProvider = new ProxyProvider("https://localhost:44320/api/GraphProxy", async () => {
       const provider = await this.context.aadTokenProviderFactory.getTokenProvider();
-      const token = await provider.getToken('14bfb200-fe7b-44ac-b19f-08d9fc2f833e');
+      const token = await provider.getToken(CLIENT_ID);
       return {
         Authorization: `Bearer ${token}`,
       };
